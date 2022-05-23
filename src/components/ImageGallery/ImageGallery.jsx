@@ -4,15 +4,14 @@ import ImageGalleryItem from "./ImageGalleryItem";
 
 function ImageGallery({ pictures, onClick }) {
   const element = pictures.map((picture) => (
-    <ImageGalleryItem
-      onClick={onClick}
-      picture={picture}
-      key={picture.id}
-      {...picture}
-    />
+    <ImageGalleryItem onClick={onClick} picture={picture} key={picture.id} />
   ));
   return <ul className={styles.imageGallery}>{element}</ul>;
 }
+
+ImageGallery.defaultProps = {
+  pictures: [],
+};
 
 ImageGallery.propTypes = {
   pictures: PropTypes.arrayOf(
@@ -21,7 +20,7 @@ ImageGallery.propTypes = {
       largeImageURL: PropTypes.string.isRequired,
       tags: PropTypes.string.isRequired,
     })
-  ).isRequired,
+  ),
   onClick: PropTypes.func.isRequired,
 };
 export default ImageGallery;

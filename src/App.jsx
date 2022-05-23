@@ -23,8 +23,8 @@ class App extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { query, loading, page } = this.state;
     if (prevState.query !== query || (loading && prevState.page < page)) {
-      this.fetchProducts();
-      this.setState({ finish: false });
+      this.fetchPictures();
+      // this.setState({ finish: false });
     }
   }
 
@@ -33,7 +33,7 @@ class App extends Component {
       showModal: !state.showModal,
     }));
   };
-  async fetchProducts() {
+  async fetchPictures() {
     try {
       const { page, query } = this.state;
       this.setState({ loading: true });
@@ -62,7 +62,6 @@ class App extends Component {
 
   handleOpenModal = (largeImage = "") => {
     this.setState({ largeImage });
-
     this.toggleModal();
   };
   onChangeQwery = ({ query }) => {
@@ -96,3 +95,4 @@ class App extends Component {
   }
 }
 export default App;
+
